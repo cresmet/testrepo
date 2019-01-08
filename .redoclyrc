@@ -1,7 +1,7 @@
 
 apiTitle: sudtest
 splitSpec: true
-codeSamples: false
+codeSamples: true
 swaggerUI: true
 travis: true
 repo: cresmet/testrepo
