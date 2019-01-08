@@ -1,5 +1,5 @@
-specFileName: 'C:\Users\ssanagala\Desktop\SBC\NODE_WORKSPACE\openapi.json'
-apiTitle: sud
+specFileName: 'C:\Users\ssanagala\Desktop\SBC\NODE_WORKSPACE\thingy.json'
+apiTitle: thingy
 splitSpec: true
 codeSamples: true
 swaggerUI: true
