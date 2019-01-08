@@ -1,0 +1,24 @@
+type: object
+description: >-
+  An individual observation for a channel is a single data value recorded at
+  some specific location at some specific time instant.
+required:
+  - recordedAt
+  - value
+properties:
+  recordedAt:
+    type: string
+    format: date-time
+    description: >-
+      The instant at which the observation was recorded expressed as an RFC3339
+      timestamp.
+    example: '2017-05-29T11:16:34.000Z'
+  location:
+    $ref: '#/definitions/Location'
+  value:
+    type: string
+    description: >-
+      The actual recorded value serialised as a string. The `dataType` property
+      on the parent channel can be used to control the deserialisation of this
+      property should it be required.
+    example: '12.9'

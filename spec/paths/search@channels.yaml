@@ -1,0 +1,105 @@
+parameters:
+  - $ref: '#/parameters/authorizationHeader'
+  - $ref: '#/parameters/apiKey'
+  - $ref: '#/parameters/correlationId'
+get:
+  tags:
+    - search
+    - channels
+  summary: Search Channels
+  operationId: searchChannels
+  security:
+    - bearer: []
+    - api_key: []
+  description: >
+    This endpoint allows clients to issue search requests against the Thingful
+    API to discover specific channels on IoT resource indexed by Thingful, where
+    they are searchable be various geographical and semantic parameters.
+
+
+    Search results include only metadata - they never return observations for a
+    Channel. To this data a client must then issue an access request to any
+    channels of interest, optionally requesting a refresh of the data at that
+    point.
+
+
+    In addition for channels a client may issue a historical request for ranges
+    of time series data for a specific channel once they have used search in
+    order to discover it.
+  parameters:
+    - $ref: '#/parameters/longitude'
+    - $ref: '#/parameters/latitude'
+    - $ref: '#/parameters/radius'
+    - $ref: '#/parameters/perPage'
+    - $ref: '#/parameters/sort'
+    - $ref: '#/parameters/nextCursor'
+    - $ref: '#/parameters/providerId'
+    - $ref: '#/parameters/licenseId'
+    - $ref: '#/parameters/licensePermits'
+    - $ref: '#/parameters/licenseRequires'
+    - $ref: '#/parameters/licenseProhibits'
+    - $ref: '#/parameters/quantityKind'
+    - $ref: '#/parameters/measuredBy'
+    - $ref: '#/parameters/unit'
+    - $ref: '#/parameters/domain'
+  responses:
+    '200':
+      description: Success
+      schema:
+        type: object
+        properties:
+          '@context':
+            $ref: '#/definitions/Context'
+          links:
+            type: object
+            properties:
+              self:
+                type: string
+                format: url
+                example: 'http://api.thingful.net/search/channels?domain=m3-lite:Weather'
+              next:
+                type: string
+                format: url
+                example: >-
+                  https://api.thingful.net/search/channels?domain=m3-lite:Weather&nextCursor=sb7td6gd
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  $ref: '#/definitions/ChannelID'
+                type:
+                  $ref: '#/definitions/ChannelType'
+                attributes:
+                  type: object
+                  allOf:
+                    - $ref: '#/definitions/ChannelMetadataAttributes'
+                    - $ref: '#/definitions/ChannelDataTypeAttributes'
+                    - $ref: '#/definitions/ChannelExtraAttributes'
+                    - $ref: '#/definitions/TimestampAttributes'
+      headers:
+        X-Correlation-Id:
+          description: >-
+            A request specific identifier returned by the server that can be
+            used for debugging failing requests to the API. If a client supplies
+            this header then this value will be returned to them, else a unique
+            identifier will be generated on the server.
+          type: string
+        X-RateLimit-Limit:
+          description: The number of allowed requests for the current time period.
+          type: integer
+        X-RateLimit-Remaining:
+          description: >-
+            The number of allowed requests remaining for the client within the
+            current time period.
+          type: integer
+        X-RateLimit-Rest:
+          description: The number of seconds left in the current time period.
+          type: integer
+    '401':
+      $ref: '#/responses/401ErrorResponse'
+    '403':
+      $ref: '#/responses/403ErrorResponse'
+    '500':
+      $ref: '#/responses/500ErrorResponse'

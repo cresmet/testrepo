@@ -1,0 +1,19 @@
+type: object
+description: >-
+  A single piece of generic metadata that should be attached to a Thing or
+  Channel. This is used to capture extra metadata that is not already described
+  by explicit properties of the object.
+properties:
+  prop:
+    type: string
+    description: >-
+      The name of this property, it can either be a URL literal, or a JSON-LD
+      expandable property which resolves to a complete URL.
+    example: 'thingful:hasBusRoute'
+  val:
+    type: string
+    description: >-
+      The value of the property. This can either be an expandable JSON-LD
+      property, a complete URL describing some specific property, or a string
+      literal.
+    example: '42'

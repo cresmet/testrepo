@@ -1,0 +1,25 @@
+type: object
+description: 'Object used to hold location information for a Thing, Channel or Observation.'
+required:
+  - long
+  - lat
+properties:
+  long:
+    type: number
+    format: float
+    description: The longitude of the resource expressed in decimal notation.
+    example: -0.084101
+    maximum: 180
+    minimum: -180
+  lat:
+    type: number
+    format: float
+    description: The latitude of the resource expressed in decimal notation.
+    example: 51.552338
+    maximum: 90
+    minimum: -90
+  elevation:
+    type: number
+    format: float
+    description: 'The elevation above sea level, expressed in metres.'
+    example: 23.9

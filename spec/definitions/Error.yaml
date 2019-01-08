@@ -1,0 +1,36 @@
+description: An error object returned by the API.
+type: object
+required:
+  - status
+  - title
+properties:
+  status:
+    type: string
+    description: The HTTP status code applicable to this problem expressed as a string
+    example: 400
+  title:
+    type: string
+    description: Short human-readable summary of the problem
+    example: Bad Request
+  detail:
+    type: string
+    description: >-
+      Optional longer form human-readable explanation tailored to be specific to
+      this specific occurence of the problem.
+  source:
+    type: object
+    properties:
+      pointer:
+        type: string
+        description: >-
+          A string containing a JSON pointer to the specific field within a
+          received JSON body that caused the problem, e.g.
+          '/data/attributes/title' to refer to the `title` property within the
+          `attributes` object that is a child of the top level `data` object.
+        example: /data/attributes/title
+      parameter:
+        type: string
+        description: >-
+          A string containing a reference to a specific query parameter that has
+          caused the problem.
+        example: long

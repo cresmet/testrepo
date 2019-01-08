@@ -1,0 +1,4 @@
+description: Link to a JSON-LD context semantically describing the returned JSON
+type: string
+format: url
+example: 'https://thingful.github.io/schema/context/context.ld'

@@ -1,0 +1,80 @@
+post:
+  tags:
+    - things
+  summary: Create Thing
+  operationId: createThing
+  description: >
+    This endpoint allows a user with sufficient permissions to create a new
+    Thing instance within Thingful's database.
+  security:
+    - bearer: []
+    - api_key: []
+  parameters:
+    - $ref: '#/parameters/correlationId'
+    - name: thing
+      in: body
+      description: The incoming Thing data to create.
+      required: true
+      schema:
+        type: object
+        properties:
+          data:
+            type: object
+            description: The top level container for the updated data for the Thing.
+            required:
+              - type
+              - attributes
+            properties:
+              type:
+                type: string
+                enum:
+                  - 'thingful:Thing'
+                description: >-
+                  The type of resource we are updating. For things this must be
+                  `thingful:Thing`.
+              attributes:
+                allOf:
+                  - $ref: '#/definitions/ThingAttributes'
+                  - $ref: '#/definitions/ThingCreateAttributes'
+                required:
+                  - title
+                  - visibility
+                  - endpoint
+                  - provider
+                  - category
+                  - license
+                  - location
+                  - channels
+  responses:
+    '201':
+      description: Success
+      schema:
+        type: object
+        properties:
+          '@context':
+            $ref: '#/definitions/Context'
+          links:
+            $ref: '#/definitions/Links'
+          data:
+            type: object
+            description: Container for the created Thing resource
+            properties:
+              id:
+                $ref: '#/definitions/ThingID'
+              type:
+                type: string
+                enum:
+                  - 'thingful:Thing'
+                description: >-
+                  The type of the resource. For things this will always have the
+                  value `thingful:Thing`.
+              attributes:
+                allOf:
+                  - $ref: '#/definitions/ThingAttributes'
+                  - $ref: '#/definitions/ThingAccessAttributes'
+                  - $ref: '#/definitions/TimestampAttributes'
+      headers:
+        Location:
+          description: The location of the newly created Thing resource
+          type: string
+          format: url

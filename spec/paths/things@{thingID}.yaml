@@ -1,0 +1,93 @@
+parameters:
+  - $ref: '#/parameters/thingID'
+  - $ref: '#/parameters/authorizationHeader'
+  - $ref: '#/parameters/apiKey'
+  - $ref: '#/parameters/correlationId'
+get:
+  tags:
+    - things
+  summary: Get a Thing by ID
+  operationId: getThing
+  security:
+    - bearer: []
+    - api_key: []
+  description: >
+    This endpoint returns data for a Thing (an IoT resource) indexed by
+    Thingful. It returns either the latest snapshot of the resource (which may
+    be the latest data available), or a parameter can be specified which asks
+    Thingful to go and fetch the value from the upstream data source "now".
+
+
+    In addition this endpoint also allows historical data to be retrieved for
+    the Thing by supplying a `from` and `to` parameter specifying the beginning
+    and end of a time range. Currently the maximum time range we permit
+    historical queries to span is 10 days, though this value is liable to change
+    at any time.
+  parameters:
+    - $ref: '#/parameters/refresh'
+    - $ref: '#/parameters/from'
+    - $ref: '#/parameters/to'
+  responses:
+    '200':
+      $ref: '#/responses/ThingSuccessResponse'
+    '401':
+      $ref: '#/responses/401ErrorResponse'
+    '403':
+      $ref: '#/responses/403ErrorResponse'
+    '404':
+      $ref: '#/responses/Thing404ErrorResponse'
+    '500':
+      $ref: '#/responses/500ErrorResponse'
+patch:
+  tags:
+    - things
+  summary: Update Thing
+  operationId: updateThing
+  security:
+    - bearer: []
+    - api_key: []
+  description: >
+    This endpoint allows the owner of a Thingful resource to send an update
+    containing new observations and/or location information to Thingful. When
+    sending a PATCH request for a thing a client may *only* send the fields they
+    specifically wish to update, other fields can be omitted. These omitted
+    fields will be left unchanged after the update has completed.
+
+
+    Typically a client might only send over the contained `observations`
+    property for each channel containing new data points to be stored.
+  parameters:
+    - name: thing
+      in: body
+      description: The incoming Thing data to update.
+      required: true
+      schema:
+        type: object
+        properties:
+          data:
+            type: object
+            description: The top level container for the updated data for the Thing.
+            required:
+              - type
+              - id
+              - attributes
+            properties:
+              id:
+                $ref: '#/definitions/ThingID'
+              type:
+                $ref: '#/definitions/ThingType'
+              attributes:
+                allOf:
+                  - $ref: '#/definitions/ThingAttributes'
+                  - $ref: '#/definitions/ThingUpdateAttributes'
+  responses:
+    '200':
+      $ref: '#/responses/ThingSuccessResponse'
+    '401':
+      $ref: '#/responses/401ErrorResponse'
+    '403':
+      $ref: '#/responses/403ErrorResponse'
+    '404':
+      $ref: '#/responses/Thing404ErrorResponse'
+    '500':
+      $ref: '#/responses/500ErrorResponse'
