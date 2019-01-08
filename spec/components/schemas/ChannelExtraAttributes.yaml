@@ -1,0 +1,8 @@
+type: object
+properties:
+  location:
+    $ref: '#/components/schemas/Location'
+  provider:
+    $ref: '#/components/schemas/Provider'
+  license:
+    $ref: '#/components/schemas/License'

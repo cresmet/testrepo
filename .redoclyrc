@@ -1,8 +1,8 @@
-specFileName: 'C:\Users\ssanagala\Desktop\SBC\NODE_WORKSPACE\thingy.json'
-apiTitle: thingy
+specFileName: 'C:\Users\ssanagala\Desktop\SBC\NODE_WORKSPACE\thingy_3.json'
+apiTitle: sudheet
 splitSpec: true
 codeSamples: true
 swaggerUI: true
 travis: true
 repo: cresmet/testrepo
-oasVersion: '2.0'
+oasVersion: 3.0.0

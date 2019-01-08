@@ -1,8 +1,8 @@
 parameters:
-  - $ref: '#/parameters/thingID'
-  - $ref: '#/parameters/authorizationHeader'
-  - $ref: '#/parameters/apiKey'
-  - $ref: '#/parameters/correlationId'
+  - $ref: '#/components/parameters/thingID'
+  - $ref: '#/components/parameters/authorizationHeader'
+  - $ref: '#/components/parameters/apiKey'
+  - $ref: '#/components/parameters/correlationId'
 get:
   tags:
     - things
@@ -24,20 +24,20 @@ get:
     historical queries to span is 10 days, though this value is liable to change
     at any time.
   parameters:
-    - $ref: '#/parameters/refresh'
-    - $ref: '#/parameters/from'
-    - $ref: '#/parameters/to'
+    - $ref: '#/components/parameters/refresh'
+    - $ref: '#/components/parameters/from'
+    - $ref: '#/components/parameters/to'
   responses:
     '200':
-      $ref: '#/responses/ThingSuccessResponse'
+      $ref: '#/components/responses/ThingSuccessResponse'
     '401':
-      $ref: '#/responses/401ErrorResponse'
+      $ref: '#/components/responses/401ErrorResponse'
     '403':
-      $ref: '#/responses/403ErrorResponse'
+      $ref: '#/components/responses/403ErrorResponse'
     '404':
-      $ref: '#/responses/Thing404ErrorResponse'
+      $ref: '#/components/responses/Thing404ErrorResponse'
     '500':
-      $ref: '#/responses/500ErrorResponse'
+      $ref: '#/components/responses/500ErrorResponse'
 patch:
   tags:
     - things
@@ -56,38 +56,58 @@ patch:
 
     Typically a client might only send over the contained `observations`
     property for each channel containing new data points to be stored.
-  parameters:
-    - name: thing
-      in: body
-      description: The incoming Thing data to update.
-      required: true
-      schema:
-        type: object
-        properties:
-          data:
-            type: object
-            description: The top level container for the updated data for the Thing.
-            required:
-              - type
-              - id
-              - attributes
-            properties:
-              id:
-                $ref: '#/definitions/ThingID'
-              type:
-                $ref: '#/definitions/ThingType'
-              attributes:
-                allOf:
-                  - $ref: '#/definitions/ThingAttributes'
-                  - $ref: '#/definitions/ThingUpdateAttributes'
   responses:
     '200':
-      $ref: '#/responses/ThingSuccessResponse'
+      $ref: '#/components/responses/ThingSuccessResponse'
     '401':
-      $ref: '#/responses/401ErrorResponse'
+      $ref: '#/components/responses/401ErrorResponse'
     '403':
-      $ref: '#/responses/403ErrorResponse'
+      $ref: '#/components/responses/403ErrorResponse'
     '404':
-      $ref: '#/responses/Thing404ErrorResponse'
+      $ref: '#/components/responses/Thing404ErrorResponse'
     '500':
-      $ref: '#/responses/500ErrorResponse'
+      $ref: '#/components/responses/500ErrorResponse'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            data:
+              type: object
+              description: The top level container for the updated data for the Thing.
+              required:
+                - type
+                - id
+                - attributes
+              properties:
+                id:
+                  $ref: '#/components/schemas/ThingID'
+                type:
+                  $ref: '#/components/schemas/ThingType'
+                attributes:
+                  allOf:
+                    - $ref: '#/components/schemas/ThingAttributes'
+                    - $ref: '#/components/schemas/ThingUpdateAttributes'
+      text/csv:
+        schema:
+          type: object
+          properties:
+            data:
+              type: object
+              description: The top level container for the updated data for the Thing.
+              required:
+                - type
+                - id
+                - attributes
+              properties:
+                id:
+                  $ref: '#/components/schemas/ThingID'
+                type:
+                  $ref: '#/components/schemas/ThingType'
+                attributes:
+                  allOf:
+                    - $ref: '#/components/schemas/ThingAttributes'
+                    - $ref: '#/components/schemas/ThingUpdateAttributes'
+    description: The incoming Thing data to update.
+    required: true

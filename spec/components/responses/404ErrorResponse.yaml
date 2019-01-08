@@ -1,0 +1,15 @@
+description: Not Found
+content:
+  application/json:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'
+    examples:
+      response:
+        value:
+          errors:
+            - status: '404'
+              title: Resource Not Found
+              detail: Unable to locate the requested resource
+  text/csv:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'

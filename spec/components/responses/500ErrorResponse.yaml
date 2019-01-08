@@ -1,0 +1,15 @@
+description: Server Error
+content:
+  application/json:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'
+    examples:
+      response:
+        value:
+          errors:
+            - status: '500'
+              title: Unexpected Error
+              detail: An error occurred while saving record to the database
+  text/csv:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'

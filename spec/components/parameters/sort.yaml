@@ -1,0 +1,22 @@
+name: sort
+in: query
+description: >
+  Specify how results should be sorted, either ordered by how recently the
+  resource was last updated, or by distance from the specified search location,
+  or if a full text query has been specified using the `q` parameter by a score
+  value indicating how good a match for the search request the resource is.
+
+
+  It is an error to specify a sort of `distance` if no geographical location has
+  been specified for the current request.
+
+
+  It is an error to specify a sort of `score` if no full text search query has
+  been specified for the current request.
+schema:
+  type: string
+  enum:
+    - lastUpdated
+    - distance
+    - score
+  default: lastUpdated

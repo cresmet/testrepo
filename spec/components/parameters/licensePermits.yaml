@@ -1,0 +1,8 @@
+name: license.permits
+in: query
+description: >
+  This parameter allows clients to search for things that permit certain types
+  of use, where the value of this query parameter is either an expandable
+  JSON-LD property or the complete URL.
+schema:
+  type: string

@@ -3,4 +3,4 @@ required:
   - type
 properties:
   type:
-    $ref: '#/definitions/ChannelType'
+    $ref: '#/components/schemas/ChannelType'

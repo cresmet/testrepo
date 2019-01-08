@@ -1,0 +1,17 @@
+description: Bad Request
+content:
+  application/json:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'
+    examples:
+      response:
+        value:
+          errors:
+            - status: '400'
+              title: Bad Request
+              detail: Missing required parameter
+              source:
+                parameter: long
+  text/csv:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'

@@ -1,7 +1,7 @@
 parameters:
-  - $ref: '#/parameters/authorizationHeader'
-  - $ref: '#/parameters/apiKey'
-  - $ref: '#/parameters/correlationId'
+  - $ref: '#/components/parameters/authorizationHeader'
+  - $ref: '#/components/parameters/apiKey'
+  - $ref: '#/components/parameters/correlationId'
 get:
   tags:
     - search
@@ -22,75 +22,117 @@ get:
     against the Thing, optionally requesting a refresh of the data at that
     point.
   parameters:
-    - $ref: '#/parameters/query'
-    - $ref: '#/parameters/longitude'
-    - $ref: '#/parameters/latitude'
-    - $ref: '#/parameters/radius'
-    - $ref: '#/parameters/perPage'
-    - $ref: '#/parameters/sort'
-    - $ref: '#/parameters/nextCursor'
-    - $ref: '#/parameters/providerId'
-    - $ref: '#/parameters/licenseId'
-    - $ref: '#/parameters/licensePermits'
-    - $ref: '#/parameters/licenseRequires'
-    - $ref: '#/parameters/licenseProhibits'
+    - $ref: '#/components/parameters/query'
+    - $ref: '#/components/parameters/longitude'
+    - $ref: '#/components/parameters/latitude'
+    - $ref: '#/components/parameters/radius'
+    - $ref: '#/components/parameters/perPage'
+    - $ref: '#/components/parameters/sort'
+    - $ref: '#/components/parameters/nextCursor'
+    - $ref: '#/components/parameters/providerId'
+    - $ref: '#/components/parameters/licenseId'
+    - $ref: '#/components/parameters/licensePermits'
+    - $ref: '#/components/parameters/licenseRequires'
+    - $ref: '#/components/parameters/licenseProhibits'
     - name: thingType
       in: query
-      type: string
       description: >
         This parameter is used to return things of a specific type, i.e. only
         return connected vehicles. This parameter can only be used for Thing
         level searches.
-      enum:
-        - 'thingful:ConnectedDevice'
-        - 'thingful:ConnectedVehicle'
-        - 'thingful:TransportationNode'
-    - $ref: '#/parameters/quantityKind'
-    - $ref: '#/parameters/measuredBy'
-    - $ref: '#/parameters/unit'
-    - $ref: '#/parameters/domain'
+      schema:
+        type: string
+        enum:
+          - 'thingful:ConnectedDevice'
+          - 'thingful:ConnectedVehicle'
+          - 'thingful:TransportationNode'
+    - $ref: '#/components/parameters/quantityKind'
+    - $ref: '#/components/parameters/measuredBy'
+    - $ref: '#/components/parameters/unit'
+    - $ref: '#/components/parameters/domain'
   responses:
     '200':
       description: Success
-      schema:
-        type: object
-        properties:
-          '@context':
-            $ref: '#/definitions/Context'
-          links:
+      content:
+        application/json:
+          schema:
             type: object
             properties:
-              self:
-                type: string
-                format: url
-                example: 'http://api.thingful.net/search?channels.domain=m3-lite:Weather'
-              next:
-                type: string
-                format: url
-                example: >-
-                  https://api.thingful.net/search?domain=m3-lite:Weather&nextCursor=sb7td6gd
-          data:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  $ref: '#/definitions/ThingID'
-                type:
-                  $ref: '#/definitions/ThingType'
-                links:
+              '@context':
+                $ref: '#/components/schemas/Context'
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    format: url
+                    example: >-
+                      http://api.thingful.net/search?channels.domain=m3-lite:Weather
+                  next:
+                    type: string
+                    format: url
+                    example: >-
+                      https://api.thingful.net/search?domain=m3-lite:Weather&nextCursor=sb7td6gd
+              data:
+                type: array
+                items:
                   type: object
                   properties:
-                    self:
-                      $ref: '#/definitions/ThingID'
-                attributes:
-                  allOf:
-                    - $ref: '#/definitions/ThingAttributes'
-                    - $ref: '#/definitions/ThingSearchAttributes'
-                    - $ref: '#/definitions/TimestampAttributes'
+                    id:
+                      $ref: '#/components/schemas/ThingID'
+                    type:
+                      $ref: '#/components/schemas/ThingType'
+                    links:
+                      type: object
+                      properties:
+                        self:
+                          $ref: '#/components/schemas/ThingID'
+                    attributes:
+                      allOf:
+                        - $ref: '#/components/schemas/ThingAttributes'
+                        - $ref: '#/components/schemas/ThingSearchAttributes'
+                        - $ref: '#/components/schemas/TimestampAttributes'
+        text/csv:
+          schema:
+            type: object
+            properties:
+              '@context':
+                $ref: '#/components/schemas/Context'
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    format: url
+                    example: >-
+                      http://api.thingful.net/search?channels.domain=m3-lite:Weather
+                  next:
+                    type: string
+                    format: url
+                    example: >-
+                      https://api.thingful.net/search?domain=m3-lite:Weather&nextCursor=sb7td6gd
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ThingID'
+                    type:
+                      $ref: '#/components/schemas/ThingType'
+                    links:
+                      type: object
+                      properties:
+                        self:
+                          $ref: '#/components/schemas/ThingID'
+                    attributes:
+                      allOf:
+                        - $ref: '#/components/schemas/ThingAttributes'
+                        - $ref: '#/components/schemas/ThingSearchAttributes'
+                        - $ref: '#/components/schemas/TimestampAttributes'
     '401':
-      $ref: '#/responses/401ErrorResponse'
+      $ref: '#/components/responses/401ErrorResponse'
     '403':
-      $ref: '#/responses/403ErrorResponse'
+      $ref: '#/components/responses/403ErrorResponse'
     '500':
-      $ref: '#/responses/500ErrorResponse'
+      $ref: '#/components/responses/500ErrorResponse'

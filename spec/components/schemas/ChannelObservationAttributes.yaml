@@ -7,4 +7,4 @@ properties:
     type: array
     description: An array containing individual observations for the channel.
     items:
-      $ref: '#/definitions/Observation'
+      $ref: '#/components/schemas/Observation'

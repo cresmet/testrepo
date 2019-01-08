@@ -33,4 +33,4 @@ properties:
     type: array
     description: Optional array of additional metadata properties for the channel
     items:
-      $ref: '#/definitions/Property'
+      $ref: '#/components/schemas/Property'

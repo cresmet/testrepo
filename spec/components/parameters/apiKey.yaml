@@ -1,0 +1,8 @@
+name: key
+in: query
+description: >
+  For clients unable to send HTTP headers, they may also send their
+  authorization token via this query parameter. This method of authentication is
+  not recommended, as it can lead to credentials appearing in server logs.
+schema:
+  type: string

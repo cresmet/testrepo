@@ -1,13 +1,14 @@
 parameters:
-  - $ref: '#/parameters/thingID'
+  - $ref: '#/components/parameters/thingID'
   - name: channelID
     in: path
     description: The ID of the channel
     required: true
-    type: string
-  - $ref: '#/parameters/authorizationHeader'
-  - $ref: '#/parameters/apiKey'
-  - $ref: '#/parameters/correlationId'
+    schema:
+      type: string
+  - $ref: '#/components/parameters/authorizationHeader'
+  - $ref: '#/components/parameters/apiKey'
+  - $ref: '#/components/parameters/correlationId'
 get:
   tags:
     - channels
@@ -31,17 +32,17 @@ get:
     Clients are also able to request that Thingful attempt to go and fetch the
     latest data for a channel by setting the `refresh` parameter to true.
   parameters:
-    - $ref: '#/parameters/refresh'
-    - $ref: '#/parameters/from'
-    - $ref: '#/parameters/to'
+    - $ref: '#/components/parameters/refresh'
+    - $ref: '#/components/parameters/from'
+    - $ref: '#/components/parameters/to'
   responses:
     '200':
-      $ref: '#/responses/ChannelSuccessResponse'
+      $ref: '#/components/responses/ChannelSuccessResponse'
     '400':
-      $ref: '#/responses/400ErrorResponse'
+      $ref: '#/components/responses/400ErrorResponse'
     '403':
-      $ref: '#/responses/403ErrorResponse'
+      $ref: '#/components/responses/403ErrorResponse'
     '404':
-      $ref: '#/responses/404ErrorResponse'
+      $ref: '#/components/responses/404ErrorResponse'
     '500':
-      $ref: '#/responses/500ErrorResponse'
+      $ref: '#/components/responses/500ErrorResponse'

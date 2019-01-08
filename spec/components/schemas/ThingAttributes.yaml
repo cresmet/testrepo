@@ -37,13 +37,13 @@ properties:
       page describing the type of resource it is, or just a link to the main
       home page of the data provider.
   provider:
-    $ref: '#/definitions/Provider'
+    $ref: '#/components/schemas/Provider'
   category:
     type: string
     description: The general category of the Thing resource
     example: 'thingful:Transport'
   license:
-    $ref: '#/definitions/License'
+    $ref: '#/components/schemas/License'
   attributionName:
     type: string
     description: >-
@@ -55,12 +55,12 @@ properties:
     format: url
     example: 'http://www.example-weather.net/entity'
   location:
-    $ref: '#/definitions/Location'
+    $ref: '#/components/schemas/Location'
   metadata:
     type: array
     description: Optional array of additional metadata properties for the thing
     items:
-      $ref: '#/definitions/Property'
+      $ref: '#/components/schemas/Property'
   channels:
     type: array
     description: >-
@@ -68,5 +68,5 @@ properties:
       published for the parent Thing
     items:
       allOf:
-        - $ref: '#/definitions/ChannelIDAttributes'
-        - $ref: '#/definitions/ChannelMetadataAttributes'
+        - $ref: '#/components/schemas/ChannelIDAttributes'
+        - $ref: '#/components/schemas/ChannelMetadataAttributes'

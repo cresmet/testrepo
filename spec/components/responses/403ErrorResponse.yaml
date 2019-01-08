@@ -1,0 +1,15 @@
+description: Forbidden
+content:
+  application/json:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'
+    examples:
+      response:
+        value:
+          errors:
+            - status: '403'
+              title: Forbidden
+              detail: You are forbidden from accessing this resource
+  text/csv:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'

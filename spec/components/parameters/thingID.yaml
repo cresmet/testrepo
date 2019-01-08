@@ -1,0 +1,6 @@
+name: thingID
+in: path
+description: The ID of the Thing
+required: true
+schema:
+  type: string
