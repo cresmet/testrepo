@@ -1,0 +1,17 @@
+get:
+  summary: Retrieve the details for a single message.
+  tags:
+    - Messages
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+    - name: messageId
+      in: path
+      description: The unique identifier for this message
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: List of messages in a bucket
+    default:
+      $ref: '#/components/responses/UnexpectedError'

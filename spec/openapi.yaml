@@ -1,28 +1,10 @@
 openapi: 3.0.0
 info:
-  description: >
-    Thingful.net API documentation - design document.
-
-
-    **This draft of the documentation is a design proposal, and is not currently
-    deployed, though it is under development.**
-  version: 2017.06.05
-  title: Thingful
-  termsOfService: 'https://thingful.net/site/tos/'
-  contact:
-    email: support@thingful.net
-    url: 'https://thingful.net/site/contact'
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  x-logo:
-    url: logo.png
-tags:
-  - name: things
-    description: Operations to do with discovering and accessing IoT resources.
-  - name: channels
-    description: Operations to do with accessing individual thing channels
-  - name: search
-    description: Search operations
+  title: Runscope API
+  description: Manage Runscope programmatically.
+  version: 1.0.0
 servers:
-  - url: 'https://api.thingful.net/'
+  - url: 'https://api.runscope.com/'
+security:
+  - runscope_auth:
+      - 'api:read'

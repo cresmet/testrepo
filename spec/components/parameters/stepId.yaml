@@ -1,0 +1,6 @@
+name: stepId
+in: path
+required: true
+description: Unique identifier for a test step
+schema:
+  type: string

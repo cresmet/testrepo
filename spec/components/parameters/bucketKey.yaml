@@ -1,0 +1,6 @@
+name: bucketKey
+in: path
+description: Unique identifier for a bucket
+required: true
+schema:
+  type: string

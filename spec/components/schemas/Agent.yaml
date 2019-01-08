@@ -1,0 +1,13 @@
+properties:
+  version:
+    type: string
+    description: The version for this agent.
+  agent_id:
+    type: string
+    description: The unique identifier for this agent.
+  name:
+    type: string
+    description: >-
+      The name of the agent set in the configuration file or with the command
+      line flag.
+type: object

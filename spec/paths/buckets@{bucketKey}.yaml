@@ -1,0 +1,30 @@
+get:
+  summary: Returns a single bucket resource.
+  tags:
+    - Buckets
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+  responses:
+    '200':
+      description: Bucket details.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Bucket'
+    default:
+      $ref: '#/components/responses/UnexpectedError'
+delete:
+  summary: Delete a single bucket resource.
+  tags:
+    - Buckets
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+  responses:
+    '204':
+      description: No content with no body.
+    default:
+      $ref: '#/components/responses/UnexpectedError'
+  security:
+    - runscope_auth:
+        - 'api:read'
+        - 'bucket:write'

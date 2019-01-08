@@ -1,0 +1,28 @@
+get:
+  summary: Returns list of shared environments for a specified bucket.
+  tags:
+    - Shared Environments
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+  responses:
+    '200':
+      description: List of shared environments belonging to this bucket.
+  security:
+    - runscope_auth:
+        - 'api:read'
+        - 'test:read'
+post:
+  summary: Create new shared environment.
+  tags:
+    - Shared Environments
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+  responses:
+    '201':
+      description: Details of the new test environment.
+  security:
+    - runscope_auth:
+        - 'api:read'
+        - 'test:write'
+  requestBody:
+    $ref: '#/components/requestBodies/Environment'

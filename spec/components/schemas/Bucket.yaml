@@ -1,0 +1,29 @@
+properties:
+  auth_token:
+    description: 'Bucket auth token if set, otherwise this value is null.'
+    type: string
+  default:
+    description: >-
+      True if this bucket is the 'default' for a team. Default buckets cannot be
+      deleted.
+    type: boolean
+  key:
+    description: The unique identifier used to address a bucket.
+    type: string
+  name:
+    description: The name of this bucket as displayed in your dashboard.
+    type: string
+  team:
+    $ref: '#/components/schemas/Team'
+  trigger_url:
+    type: string
+  verify_ssl:
+    description: True if this bucket is configured to verify ssl for requests made to it.
+    type: boolean
+  tests_url:
+    type: string
+  collections_url:
+    type: string
+  messages_url:
+    type: string
+type: object

@@ -1,0 +1,49 @@
+get:
+  summary: Returns a list of buckets.
+  tags:
+    - Buckets
+  responses:
+    '200':
+      description: List of buckets associated with this authenticated account.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bucket'
+              meta:
+                $ref: '#/components/schemas/Meta'
+    default:
+      $ref: '#/components/responses/UnexpectedError'
+  security:
+    - runscope_auth:
+        - 'api:read'
+    - runscope_auth:
+        - 'api:read'
+        - 'bucket:auth_token'
+post:
+  summary: Create a new bucket
+  tags:
+    - Buckets
+  responses:
+    '200':
+      description: Bucket details.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Bucket'
+    default:
+      $ref: '#/components/responses/UnexpectedError'
+  security:
+    - runscope_auth:
+        - 'api:read'
+        - 'bucket:write'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewBucket'
+    required: true

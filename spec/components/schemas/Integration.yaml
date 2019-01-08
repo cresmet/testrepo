@@ -1,0 +1,10 @@
+properties:
+  description:
+    type: string
+  type:
+    type: string
+  id:
+    type: string
+  uuid:
+    type: string
+type: object

@@ -1,0 +1,67 @@
+type: object
+properties:
+  integrations:
+    type: array
+    description: The list of integrations for this environment.
+    items:
+      $ref: '#/components/schemas/Integration'
+  verify_ssl:
+    type: boolean
+    description: Validate all SSL certificates on any HTTPS connections.
+  script_library:
+    type: array
+    description: >-
+      The list of ids for scripts, part of the script libraries, being used for
+      this environment.
+    items:
+      type: string
+  id:
+    type: string
+    description: The unique identifier for this environment.
+  script:
+    type: string
+    description: ''
+  regions:
+    type: array
+    description: An array of the region codes that this environment is using.
+    items:
+      type: string
+  version:
+    type: string
+  stop_on_failure:
+    type: boolean
+    description: Stop executing the test after the first failed step.
+  initial_script_hash:
+    type: string
+  auth:
+    type: string
+  exported_at:
+    type: integer
+  retry_on_failure:
+    type: boolean
+  remote_agents:
+    type: array
+    items:
+      $ref: '#/components/schemas/Agent'
+  webhooks:
+    type: string
+  test_id:
+    type: string
+    description: The unique identifier for this test.
+  emails:
+    type: object
+  name:
+    type: string
+    description: Name of this environment.
+  initial_variables:
+    type: object
+  headers:
+    type: object
+  parent_environment_id:
+    type: string
+  preserve_cookies:
+    type: boolean
+  client_certificate:
+    type: string
+required:
+  - name

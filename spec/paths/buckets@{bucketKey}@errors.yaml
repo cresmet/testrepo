@@ -1,0 +1,26 @@
+get:
+  summary: Retrieve a list of error messages in a bucket
+  tags:
+    - Messages
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+    - name: count
+      in: query
+      description: 'Maxiumum number of messages to return. Default 50, max 1000.'
+      schema:
+        type: integer
+    - name: since
+      in: query
+      description: Only return messages after the given Unix timestamp
+      schema:
+        type: integer
+    - name: before
+      in: query
+      description: Only return messages before the given Unix timestamp
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: List of error messages in a bucket
+    default:
+      $ref: '#/components/responses/UnexpectedError'

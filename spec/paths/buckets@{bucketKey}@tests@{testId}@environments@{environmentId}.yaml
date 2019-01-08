@@ -1,0 +1,17 @@
+put:
+  summary: Update the details of a test environment.
+  tags:
+    - Test Environments
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+    - $ref: '#/components/parameters/testId'
+    - $ref: '#/components/parameters/environmentId'
+  responses:
+    '201':
+      description: Details of the modified test environment.
+  security:
+    - runscope_auth:
+        - 'api:read'
+        - 'test:write'
+  requestBody:
+    $ref: '#/components/requestBodies/Environment'

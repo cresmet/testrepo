@@ -1,9 +1,11 @@
 properties:
-  code:
+  status:
     type: integer
     format: int32
   message:
     type: string
-  fields:
+  more_info:
+    type: string
+  error:
     type: string
 type: object

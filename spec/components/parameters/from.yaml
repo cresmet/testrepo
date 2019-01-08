@@ -1,8 +1,0 @@
-name: from
-in: query
-description: >
-  This parameter is used to specify the start point of a time interval for which
-  the client wishes to obtain data. It is expressed as an RFC3339 timestamp.
-schema:
-  type: string
-  format: date-time

@@ -1,0 +1,6 @@
+name: teamId
+in: path
+description: Unique identifier for team
+required: true
+schema:
+  type: string

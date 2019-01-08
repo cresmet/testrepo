@@ -1,8 +1,0 @@
-name: lat
-in: query
-description: Latitude of a point around which to search
-schema:
-  type: number
-  format: float
-  minimum: -90
-  maximum: 90

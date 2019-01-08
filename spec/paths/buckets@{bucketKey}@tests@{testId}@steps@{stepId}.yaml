@@ -1,0 +1,38 @@
+put:
+  summary: Update the details of a single test step.
+  tags:
+    - Test Steps
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+    - $ref: '#/components/parameters/testId'
+    - $ref: '#/components/parameters/stepId'
+  responses:
+    '200':
+      description: List of test steps for a test
+    '400':
+      description: 'Unable to update template ''{stepId}'' for test ''{testId}'''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StandardError'
+  security:
+    - runscope_auth:
+        - 'api:read'
+        - 'test:write'
+  requestBody:
+    $ref: '#/components/requestBodies/TestStep'
+delete:
+  summary: Delete a step from a test.
+  tags:
+    - Test Steps
+  parameters:
+    - $ref: '#/components/parameters/bucketKey'
+    - $ref: '#/components/parameters/testId'
+    - $ref: '#/components/parameters/stepId'
+  responses:
+    '204':
+      description: No content with no body.
+  security:
+    - runscope_auth:
+        - 'api:read'
+        - 'test:write'
