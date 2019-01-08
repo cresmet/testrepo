@@ -1,0 +1,7 @@
+description: >
+  This scheme relies on authenticating users by having them present a standard
+  `Authorization` header containing the value `Bearer` followed by their API
+  key.
+type: apiKey
+name: Authorization
+in: header

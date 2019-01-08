@@ -1,0 +1,6 @@
+name: license.id
+in: query
+description: The ID of a license known to Thingful expressed as a fully qualified URL.
+schema:
+  type: string
+  format: url

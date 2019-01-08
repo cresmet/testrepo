@@ -1,0 +1,13 @@
+type: object
+properties:
+  channels:
+    type: array
+    description: >-
+      An array of channel objects representing the individual data channels
+      published for the parent Thing
+    items:
+      allOf:
+        - $ref: '#/components/schemas/ChannelIDAttributes'
+        - $ref: '#/components/schemas/ChannelTypeAttributes'
+        - $ref: '#/components/schemas/ChannelMetadataAttributes'
+        - $ref: '#/components/schemas/ChannelObservationAttributes'

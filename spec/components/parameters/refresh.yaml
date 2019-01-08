@@ -1,0 +1,13 @@
+name: refresh
+in: query
+description: >
+  Boolean flag indicating whether or not the client desires Thingful to go and
+  try and retrieve the latest value from the upstream data provider, or just to
+  return the last indexed value currently stored in Thingful's database.
+
+
+  It is an error to set `refresh` to true if the client has supplied either of
+  the historical time parameters, i.e. `from` or `to`.
+schema:
+  type: boolean
+  default: false

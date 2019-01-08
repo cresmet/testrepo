@@ -1,0 +1,15 @@
+description: Unauthorized
+content:
+  application/json:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'
+    examples:
+      response:
+        value:
+          errors:
+            - status: '401'
+              title: Unauthorized
+              detail: You are not authorized to view this resource.
+  text/csv:
+    schema:
+      $ref: '#/components/schemas/ErrorResponse'

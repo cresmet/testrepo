@@ -1,0 +1,6 @@
+description: >-
+  The type of the resource. For channels this will always have the value
+  `channel`.
+type: string
+enum:
+  - 'thingful:Channel'

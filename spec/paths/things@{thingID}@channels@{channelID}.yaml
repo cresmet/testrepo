@@ -1,0 +1,48 @@
+parameters:
+  - $ref: '#/components/parameters/thingID'
+  - name: channelID
+    in: path
+    description: The ID of the channel
+    required: true
+    schema:
+      type: string
+  - $ref: '#/components/parameters/authorizationHeader'
+  - $ref: '#/components/parameters/apiKey'
+  - $ref: '#/components/parameters/correlationId'
+get:
+  tags:
+    - channels
+  summary: Get a Channel by ID
+  operationId: getChannel
+  security:
+    - bearer: []
+    - api_key: []
+  description: >
+    This endpoint returns data for an individual Channel belonging to a Thing
+    indexed by Thingful. It allows clients to either request the last indexed
+    snapshot of the channel, or historical data for the channel for a specified
+    time interval.
+
+
+    When requesting historical data the maximum time interval that can be
+    requested is currently 10 days though this value is liable to change at any
+    time. We return all available observations for the given time interval.
+
+
+    Clients are also able to request that Thingful attempt to go and fetch the
+    latest data for a channel by setting the `refresh` parameter to true.
+  parameters:
+    - $ref: '#/components/parameters/refresh'
+    - $ref: '#/components/parameters/from'
+    - $ref: '#/components/parameters/to'
+  responses:
+    '200':
+      $ref: '#/components/responses/ChannelSuccessResponse'
+    '400':
+      $ref: '#/components/responses/400ErrorResponse'
+    '403':
+      $ref: '#/components/responses/403ErrorResponse'
+    '404':
+      $ref: '#/components/responses/404ErrorResponse'
+    '500':
+      $ref: '#/components/responses/500ErrorResponse'

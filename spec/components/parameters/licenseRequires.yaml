@@ -1,0 +1,9 @@
+name: license.notRequires
+in: query
+description: >
+  This parameter allows clients to search for things that do not require certain
+  behaviours, where the value this parameter is either an expandable JSON-LD
+  property or the complete URL. For example to search for things that do not
+  require attribution you might say `license.notRequires=cc:Attribution`
+schema:
+  type: string

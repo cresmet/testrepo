@@ -1,22 +1,36 @@
+description: An error object returned by the API.
 type: object
+required:
+  - status
+  - title
 properties:
   status:
-    type: integer
-    minimum: 100
-    maximum: 600
-    description: The HTTP status code.
-  error:
     type: string
-  type:
-    type: string
-    description: >-
-      A URI reference [[RFC3986](https://tools.ietf.org/html/rfc3986)] that
-      identifies the problem type. It should provide human-readable
-      documentation for the problem type. When this member is not present, its
-      value is assumed to be "about:blank".
+    description: The HTTP status code applicable to this problem expressed as a string
+    example: 400
   title:
     type: string
+    description: Short human-readable summary of the problem
+    example: Bad Request
+  detail:
+    type: string
     description: >-
-      A short, human-readable summary of the problem type. It SHOULD NOT change
-      from occurrence to occurrence of the problem, except for purposes of
-      localization.
+      Optional longer form human-readable explanation tailored to be specific to
+      this specific occurence of the problem.
+  source:
+    type: object
+    properties:
+      pointer:
+        type: string
+        description: >-
+          A string containing a JSON pointer to the specific field within a
+          received JSON body that caused the problem, e.g.
+          '/data/attributes/title' to refer to the `title` property within the
+          `attributes` object that is a child of the top level `data` object.
+        example: /data/attributes/title
+      parameter:
+        type: string
+        description: >-
+          A string containing a reference to a specific query parameter that has
+          caused the problem.
+        example: long

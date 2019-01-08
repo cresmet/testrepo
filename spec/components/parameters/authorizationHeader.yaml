@@ -1,0 +1,7 @@
+name: Authorization
+in: header
+description: >
+  Standard Authorization header; if used then token must be sent using the
+  `Bearer` format, e.g. `Authorization: Bearer `.
+schema:
+  type: string

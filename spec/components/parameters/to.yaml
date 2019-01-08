@@ -1,0 +1,17 @@
+name: to
+in: query
+description: >
+  This parameter is used to specify the end point of a time interval for which
+  the client wishes to obtain data. It is expressed as an RFC3339 timestamp.
+
+
+  The maximum range that clients can currently request data for is 10 days
+  though this value is liable to change at any time.
+
+
+  If a client requests an interval greater than the currently defined maximum we
+  return a 400 error response to the client with an error message detailing the
+  problem.
+schema:
+  type: string
+  format: date-time

@@ -1,0 +1,6 @@
+description: >
+  For clients unable to send request headers, they may also authenticate
+  themselves by sending their API key via a query parameter.
+type: apiKey
+in: query
+name: key

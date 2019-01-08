@@ -1,0 +1,8 @@
+name: long
+in: query
+description: Longitude of a point around which to search
+schema:
+  type: number
+  format: float
+  minimum: -180
+  maximum: 180

@@ -1,0 +1,138 @@
+parameters:
+  - $ref: '#/components/parameters/authorizationHeader'
+  - $ref: '#/components/parameters/apiKey'
+  - $ref: '#/components/parameters/correlationId'
+get:
+  tags:
+    - search
+    - things
+  summary: Search Things
+  operationId: searchThings
+  security:
+    - bearer: []
+    - api_key: []
+  description: >
+    This endpoint allows clients to issue search requests against the Thingful
+    API to discover IoT resources indexed by Thingful, and made searchable by
+    various geographical and semantic parameters.
+
+
+    Search results include only metadata - they never return observations for a
+    Thing. To see this data a client must then issue an access request directly
+    against the Thing, optionally requesting a refresh of the data at that
+    point.
+  parameters:
+    - $ref: '#/components/parameters/query'
+    - $ref: '#/components/parameters/longitude'
+    - $ref: '#/components/parameters/latitude'
+    - $ref: '#/components/parameters/radius'
+    - $ref: '#/components/parameters/perPage'
+    - $ref: '#/components/parameters/sort'
+    - $ref: '#/components/parameters/nextCursor'
+    - $ref: '#/components/parameters/providerId'
+    - $ref: '#/components/parameters/licenseId'
+    - $ref: '#/components/parameters/licensePermits'
+    - $ref: '#/components/parameters/licenseRequires'
+    - $ref: '#/components/parameters/licenseProhibits'
+    - name: thingType
+      in: query
+      description: >
+        This parameter is used to return things of a specific type, i.e. only
+        return connected vehicles. This parameter can only be used for Thing
+        level searches.
+      schema:
+        type: string
+        enum:
+          - 'thingful:ConnectedDevice'
+          - 'thingful:ConnectedVehicle'
+          - 'thingful:TransportationNode'
+    - $ref: '#/components/parameters/quantityKind'
+    - $ref: '#/components/parameters/measuredBy'
+    - $ref: '#/components/parameters/unit'
+    - $ref: '#/components/parameters/domain'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              '@context':
+                $ref: '#/components/schemas/Context'
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    format: url
+                    example: >-
+                      http://api.thingful.net/search?channels.domain=m3-lite:Weather
+                  next:
+                    type: string
+                    format: url
+                    example: >-
+                      https://api.thingful.net/search?domain=m3-lite:Weather&nextCursor=sb7td6gd
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ThingID'
+                    type:
+                      $ref: '#/components/schemas/ThingType'
+                    links:
+                      type: object
+                      properties:
+                        self:
+                          $ref: '#/components/schemas/ThingID'
+                    attributes:
+                      allOf:
+                        - $ref: '#/components/schemas/ThingAttributes'
+                        - $ref: '#/components/schemas/ThingSearchAttributes'
+                        - $ref: '#/components/schemas/TimestampAttributes'
+        text/csv:
+          schema:
+            type: object
+            properties:
+              '@context':
+                $ref: '#/components/schemas/Context'
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    format: url
+                    example: >-
+                      http://api.thingful.net/search?channels.domain=m3-lite:Weather
+                  next:
+                    type: string
+                    format: url
+                    example: >-
+                      https://api.thingful.net/search?domain=m3-lite:Weather&nextCursor=sb7td6gd
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ThingID'
+                    type:
+                      $ref: '#/components/schemas/ThingType'
+                    links:
+                      type: object
+                      properties:
+                        self:
+                          $ref: '#/components/schemas/ThingID'
+                    attributes:
+                      allOf:
+                        - $ref: '#/components/schemas/ThingAttributes'
+                        - $ref: '#/components/schemas/ThingSearchAttributes'
+                        - $ref: '#/components/schemas/TimestampAttributes'
+    '401':
+      $ref: '#/components/responses/401ErrorResponse'
+    '403':
+      $ref: '#/components/responses/403ErrorResponse'
+    '500':
+      $ref: '#/components/responses/500ErrorResponse'

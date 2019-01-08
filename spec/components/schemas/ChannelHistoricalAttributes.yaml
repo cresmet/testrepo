@@ -1,0 +1,8 @@
+type: object
+properties:
+  historicalData:
+    type: boolean
+    description: >-
+      Boolean flag indicating whether or not historical data is available for
+      this individual channel.
+    example: false

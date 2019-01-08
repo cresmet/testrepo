@@ -1,0 +1,36 @@
+type: object
+description: The attributes describing an individual channel within a Thing
+properties:
+  domain:
+    type: array
+    description: The domain of this channel expressed as a JSON-LD expandable property.
+    items:
+      type: string
+    example:
+      - 'm3-lite:Weather'
+      - 'm3-lite:Environment'
+  quantityKind:
+    type: string
+    description: >-
+      The "quantity" this channel is measuring expressed as a JSON-LD expandable
+      property describing what type of quantity in the world is this channel
+      measuring.
+    example: 'm3-lite:AirTemperature'
+  measuredBy:
+    type: string
+    description: >-
+      A JSON-LD property expressing what type of sensor was used to measure this
+      channel's data value.
+    example: 'm3-lite:AirThermometer'
+  unit:
+    type: string
+    description: >-
+      The unit of measure for this data channel expressed as an expandable
+      JSON-LD property containing a pointer to a unit defined in an external
+      ontology.
+    example: 'm3-lite:DegreeCelsius'
+  metadata:
+    type: array
+    description: Optional array of additional metadata properties for the channel
+    items:
+      $ref: '#/components/schemas/Property'

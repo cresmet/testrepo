@@ -1,0 +1,10 @@
+name: license.notProhibits
+in: query
+description: >
+  This parameter allows clients to search for things that do not prohibit
+  certain behaviours, where the value this parameter is either an expandable
+  JSON-LD property or the complete URL, for example
+  `license.notProhibits=cc:CommercialUse` would search for data that does not
+  prohibit commercial uses of that data.
+schema:
+  type: string

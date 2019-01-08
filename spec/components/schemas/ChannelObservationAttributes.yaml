@@ -1,0 +1,10 @@
+type: object
+description: >-
+  Separate out observations from the rest of the channel as we omit these when
+  searching.
+properties:
+  observations:
+    type: array
+    description: An array containing individual observations for the channel.
+    items:
+      $ref: '#/components/schemas/Observation'

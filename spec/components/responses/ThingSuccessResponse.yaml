@@ -1,0 +1,65 @@
+description: Success
+headers:
+  X-Correlation-Id:
+    description: >-
+      A request specific identifier returned by the server that can be used for
+      debugging failing requests to the API. If a client supplies this header
+      then this value will be returned to them, else a unique identifier will be
+      generated on the server.
+    schema:
+      type: string
+  X-RateLimit-Limit:
+    description: The number of allowed requests for the current time period.
+    schema:
+      type: integer
+  X-RateLimit-Remaining:
+    description: >-
+      The number of allowed requests remaining for the client within the current
+      time period.
+    schema:
+      type: integer
+  X-RateLimit-Rest:
+    description: The number of seconds left in the current time period.
+    schema:
+      type: integer
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/Context'
+        links:
+          $ref: '#/components/schemas/Links'
+        data:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/ThingID'
+            type:
+              $ref: '#/components/schemas/ThingType'
+            attributes:
+              allOf:
+                - $ref: '#/components/schemas/ThingAttributes'
+                - $ref: '#/components/schemas/ThingAccessAttributes'
+                - $ref: '#/components/schemas/TimestampAttributes'
+  text/csv:
+    schema:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/Context'
+        links:
+          $ref: '#/components/schemas/Links'
+        data:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/ThingID'
+            type:
+              $ref: '#/components/schemas/ThingType'
+            attributes:
+              allOf:
+                - $ref: '#/components/schemas/ThingAttributes'
+                - $ref: '#/components/schemas/ThingAccessAttributes'
+                - $ref: '#/components/schemas/TimestampAttributes'
