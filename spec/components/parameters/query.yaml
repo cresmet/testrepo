@@ -1,7 +1,0 @@
-name: q
-in: query
-description: >
-  This parameter is used to supply a full text search parameter which attempts
-  to find things containing this value somewhere in their title or description.
-schema:
-  type: string

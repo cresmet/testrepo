@@ -1,3 +1,0 @@
-description: The ID of the individual channel
-type: string
-example: 'https://api.thingful.net/things/bj7ajg91/channels/temperature'

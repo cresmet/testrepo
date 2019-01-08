@@ -1,5 +1,0 @@
-description: Type definition for Thing resources. Must have the value `thing`.
-type: string
-example: 'thingful:Thing'
-enum:
-  - 'thingful:Thing'

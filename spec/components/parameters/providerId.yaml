@@ -1,6 +1,0 @@
-name: provider.id
-in: query
-description: The ID of a provider expressed as a fully qualified Thingful URL.
-schema:
-  type: string
-  format: url

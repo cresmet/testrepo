@@ -1,4 +1,4 @@
-# sudheet OpenAPI Specification
+# sudapi OpenAPI Specification
 [![Build Status](https://travis-ci.com/cresmet/testrepo.svg?branch=master)](https://travis-ci.com/cresmet/testrepo)
 ## Steps to finish
 

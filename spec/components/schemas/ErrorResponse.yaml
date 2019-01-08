@@ -1,9 +1,0 @@
-description: Container object for one or more errors returned by the API.
-type: object
-required:
-  - errors
-properties:
-  errors:
-    type: array
-    items:
-      $ref: '#/components/schemas/Error'

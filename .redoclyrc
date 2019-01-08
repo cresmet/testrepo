@@ -1,5 +1,5 @@
-specFileName: 'C:\Users\ssanagala\Desktop\SBC\NODE_WORKSPACE\thingy_3.json'
-apiTitle: sudheet
+specFileName: 'C:\Users\ssanagala\Desktop\SBC\NODE_WORKSPACE\openapi.json'
+apiTitle: sudapi
 splitSpec: true
 codeSamples: true
 swaggerUI: true
