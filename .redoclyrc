@@ -1,0 +1,8 @@
+
+apiTitle: testsudheer
+splitSpec: true
+codeSamples: true
+swaggerUI: true
+travis: true
+repo: cresmet/testrepo
+oasVersion: 3.0.0
