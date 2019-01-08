@@ -1,6 +1,0 @@
-name: testId
-in: path
-required: true
-description: Unique identifier for a test
-schema:
-  type: string

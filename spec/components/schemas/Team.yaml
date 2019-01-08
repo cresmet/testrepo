@@ -1,8 +1,0 @@
-properties:
-  id:
-    type: string
-    description: The unique identifier for this team.
-  name:
-    type: string
-    description: The name of this team.
-type: object

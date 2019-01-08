@@ -1,5 +1,0 @@
-properties:
-  status:
-    type: string
-    description: Success or failure status of call.
-type: object

@@ -1,7 +1,7 @@
-specFileName: 'C:\Users\ssanagala\Desktop\SBC\NODE_WORKSPACE\thingy_3.json'
+
 apiTitle: sudtest
 splitSpec: true
-codeSamples: true
+codeSamples: false
 swaggerUI: true
 travis: true
 repo: cresmet/testrepo

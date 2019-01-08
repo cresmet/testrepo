@@ -1,8 +1,0 @@
-properties:
-  meta:
-    $ref: '#/components/schemas/Meta'
-  data:
-    type: object
-  error:
-    $ref: '#/components/schemas/Error400'
-type: object

@@ -1,7 +1,0 @@
-properties:
-  step_type:
-    type: string
-    description: >-
-      Type of test step -- request, pause, condition, ghost-inspector, or
-      subtest.
-type: object
