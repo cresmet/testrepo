@@ -1,0 +1,30 @@
+type: object
+required:
+  - method
+  - paymentInstrument
+properties:
+  id:
+    description: The token identifier string
+    readOnly: true
+    allOf:
+      - $ref: '#/components/schemas/ResourceId'
+  method:
+    $ref: '#/components/schemas/Method'
+  paymentInstrument:
+    $ref: '#/components/schemas/PaymentTokenInstrument'
+  fingerprint:
+    description: Device fingerprint hash
+    type: string
+  billingAddress:
+    description: The billing address object
+    allOf:
+      - $ref: '#/components/schemas/ContactObject'
+  leadSource:
+    $ref: '#/components/schemas/LeadSource'
+  _links:
+    type: array
+    description: The links related to resource
+    readOnly: true
+    minItems: 1
+    items:
+      $ref: '#/components/schemas/SelfLink'
