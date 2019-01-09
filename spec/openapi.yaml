@@ -14,7 +14,7 @@ info:
   description: >
     This is an **example** API to demonstrate features of OpenAPI specification
 
-    # Introduction I DO NOT KNOW WHAT I AM DOING
+    # Introduction TEST SUDHEER
 
     This specification is intended to to be a good starting point for describing
     your API in Sudheer
@@ -33,7 +33,7 @@ info:
     extensions](https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md).
 
 
-    # OpenAPI Specification
+    # OpenAPI Specification 
 
     The goal of The OpenAPI Specification is to define a standard,
     language-agnostic interface to REST APIs which
@@ -49,6 +49,8 @@ info:
 
     interfaces have done for lower-level programming, OpenAPI removes the
     guesswork in calling the service.
+    
+    I just made changes to the openapi.yaml file in spec folder and did git commit and then ran npm build and npm build gh-pages
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/Rebilly/generator-openapi-repo'
